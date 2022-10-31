@@ -1,0 +1,19 @@
+body{
+
+}
+.mainArticle{
+    display: flex;
+    flex-wrap: wrap;
+}
+.articleEach{
+    width: 20vw;
+}
+.display-table, .display-table-head {
+    border: 1px solid black;
+}
+.display-table td,th {
+    border: 1px solid black;
+}
+.display-table-head td,th {
+    border: 1px solid black;
+}

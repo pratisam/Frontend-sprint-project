@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main id="main-container">
+    <table id="main-table">
+      <tr>
+        <td>Name</td>
+        <td><input type="text" id="taskName"></td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td><input type="text" id="taskDescription"></td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>
+          <select id="taskStatus">
+            <option value="To do">To do</option>
+            <option value="Doing">Doing</option>
+            <option value="Done">Done</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Date</td>
+        <td><input type="date" id="taskDate"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><button id="taskCreate">Add a task</button></td>
+      </tr>
+    </table>
+
+    <section id="taskList"></section>
+  </main>
+
+  <!-- <section class="editTaskMain">
+    <section class="editTask">
+      <table id="editTable">
+        <tr>
+          <td>Name</td>
+          <td><input type="text" id="editName"></td>
+        </tr>
+        <tr>
+          <td>Description</td>
+          <td><input type="text" id="editDescription"></td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td>
+            <select id="editStatus">
+              <option value="To do">To do</option>
+              <option value="Doing">Doing</option>
+              <option value="Done">Done</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Date</td>
+          <td><input type="date" id="editDate"></td>
+        </tr>
+        <tr>
+          <td colspan="2"><button id="editCreate">Edit this task</button></td>
+        </tr>
+      </table>
+    </section>
+  </section> -->
+  <article id="mainArticle">
+    <table id="display-table-head" class="display-table-head">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Due Date</th>
+            <th>Days-to-do</th>
+        </tr>
+    </table> 
+    <table id="display-table" class="display-table">
+
+    </table> 
+  </article>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
