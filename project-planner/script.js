@@ -8,8 +8,10 @@
 // Allow users to sort their tasks by remainining time, with the most urgent first, or by name.
 
 // BONUS: Save tasks in LocalStorage, so that they persist even when the page is refreshed.
+
 let tableJs = document.querySelector('#display-table tbody');
 let totalTask =[];
+// totalTask = localStorage.getItem('totalTaskArray')
 const sortFnction =(e) =>{
     switch(e.target.id){ 
         case 'name-sort':
@@ -49,6 +51,8 @@ const sortFnction =(e) =>{
                 }
             totalTask.push(taskJs);
             totalTask.sort((a,b) =>a.DueDays- b.DueDays);
+            // localStorage.setItem('totalTaskArray',JSON.stringify(totalTask))
+            // localStorage.clear()
             arraySorting(totalTask);
             break;
 
@@ -71,6 +75,5 @@ const arraySorting = (a)=> {
         tableJs.appendChild(row)
     })
 }
-// localStorage.setItem(totalTaskArray,)
 
 document.body.addEventListener('click',sortFnction)

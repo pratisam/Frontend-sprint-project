@@ -1,0 +1,32 @@
+body{
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    /* background-image: url(./img/bg1.avif); */
+    background-repeat: no-repeat;
+   background-size: cover;
+    animation-name: identifiers;
+    animation-duration: 50s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count:  infinite;
+}
+@keyframes identifiers {
+    0% { background-image: url(./img/bg1.avif);}
+    50% { background-image: url(./img/bg2.avif);}
+    100% { background-image: url(./img/bg1.avif);}
+}
+h1{
+    width: 100vw;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 50px;
+}
+.fa-solid{
+    color: white;
+    font-size: 20px;
+}
+span{
+    width: 100vw;
+    font-size: 20px;
+    margin-left: 38vw;
+}
