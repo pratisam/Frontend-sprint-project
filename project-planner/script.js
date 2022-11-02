@@ -10,43 +10,68 @@
 // BONUS: Save tasks in LocalStorage, so that they persist even when the page is refreshed.
 
     let createTaskJs = document.getElementById('taskCreate');
-// get the element to display the task
-    let tableJs = document.getElementById('display-table');
+    let tableJs = document.querySelector('#display-table tbody');
     let totalTask =[];
-//onClick function
-const createTaskFunction = () =>{
-    tableJs.innerHTML ="";
-// Display the tasks, with their remaining time. For instance, if today is the 15th of March and the task is due for the 20th of March, display in 5 days.
-    let dateEnd = new Date( `${document.getElementById('taskDate').value}`)
-    let due =  Math.ceil((dateEnd.getTime()-new Date().getTime())/(1000*60*60*24))
-//get the element from the task
-    var taskJs= {
-            Name         : document.getElementById('taskName').value,
-            Description  : document.getElementById('taskDescription').value,
-            Status       : document.getElementById('taskStatus').value,
-            Date         : document.getElementById('taskDate').value,
-            DueDays      : due,
-        }
-    totalTask.push(taskJs)
-    totalTask.sort((a,b) =>a.DueDays- b.DueDays)
+const sortFnction =(e) =>{
+    switch(e.target.id){ 
+        case 'name-sort':
+            totalTask.sort((a,b) =>a.Name.localeCompare(b.Name))
+            arraySorting(totalTask)
+            break;  
+        
+        case 'day-sort':
+            totalTask.sort((a,b) =>a.DueDays- b.DueDays)
+            arraySorting(totalTask)
+            break;
 
-//create the element to display the task
+        case 'status-sort-select':
+            let statusSort = document.getElementById('status-sort-select');
+            let statusValue = statusSort.value;
+            let statusTask = totalTask.filter(function(ele){
+                    if(ele.Status == statusValue) 
+                            return ele.Status
+                
+                    else if(statusValue==""){
+                        return ele
+                    }
+                });
+            arraySorting(statusTask)
+            break;
+        
+        case 'taskCreate':
+            let dateEnd = new Date( `${document.getElementById('taskDate').value}`);
+            let due =  Math.ceil((dateEnd.getTime()-new Date().getTime())/(1000*60*60*24));
 
-    // let articleEach = document.createElement('article');
-    // articleEach.classList.add('articleEach')
-    totalTask.forEach((taskJs)=>{
-    let row = document.createElement('tr')
-        for(var propt in taskJs){
-            let column = document.createElement('td')
-            column.innerHTML = taskJs[propt];
-            row.appendChild(column)
-        }
-    tableJs.appendChild(row)
-       
-    })
-   
+            let taskJs= {
+                    Name         : document.getElementById('taskName').value,
+                    Description  : document.getElementById('taskDescription').value,
+                    Status       : document.getElementById('taskStatus').value,
+                    Date         : document.getElementById('taskDate').value,
+                    DueDays      : due,
+                }
+            totalTask.push(taskJs);
+            totalTask.sort((a,b) =>a.DueDays- b.DueDays);
+            arraySorting(totalTask);
+            break;
+
+        default:
+            break;  
+    
+    }
+    
 }
-createTaskJs.addEventListener('click',createTaskFunction)
 
-// Filter tasks (ex: only show "to do" tasks)
+const arraySorting = (a)=> {
+    tableJs.innerHTML ="";
+    a.forEach((taskJs)=>{
+        let row = document.createElement('tr')
+            for(var propt in taskJs){
+                let column = document.createElement('td')
+                column.innerHTML = taskJs[propt];
+                row.appendChild(column)
+            }
+        tableJs.appendChild(row)
+    })
+}
 
+document.body.addEventListener('click',sortFnction)

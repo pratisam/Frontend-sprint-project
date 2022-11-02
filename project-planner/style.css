@@ -8,12 +8,41 @@ body{
 .articleEach{
     width: 20vw;
 }
-.display-table, .display-table-head {
+.display-table {
     border: 1px solid black;
+    border-collapse: collapse;
+    width: 90vw;
+    font-size: 15px;
+
 }
-.display-table td,th {
-    border: 1px solid black;
+.display-table td {
+    border: 1px solid rgb(77, 75, 75);
+    font-size: 10px;
+    text-align: center;
+    
 }
-.display-table-head td,th {
+.display-table th{
     border: 1px solid black;
+    text-align: center;
+
+}
+.display-table i{
+    font-size: 20px;
+}
+#name-sort{
+    font-size: 15px;
+}
+#day-sort{
+    font-size: 15px;
+    
+}
+#status-sort{
+    font-weight: bold;
+    font-size: 15px;
+
+}
+#status-sort-select{
+    font-weight: bold;
+    font-size: 15px;
+    border: none;
 }

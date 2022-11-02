@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> -->
+  <script src="https://kit.fontawesome.com/6e996b60b5.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
@@ -13,7 +14,7 @@
     <table id="main-table">
       <tr>
         <td>Name</td>
-        <td><input type="text" id="taskName"></td>
+        <td><input type="text" id="taskName"></td>  
       </tr>
       <tr>
         <td>Description</td>
@@ -73,18 +74,26 @@
     </section>
   </section> -->
   <article id="mainArticle">
-    <table id="display-table-head" class="display-table-head">
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Status</th>
-            <th>Due Date</th>
-            <th>Days-to-do</th>
-        </tr>
-    </table> 
     <table id="display-table" class="display-table">
-
+        <thead>
+            <th>Name <i id="name-sort" class="fa-sharp fa-solid fa-sort"></i> </th>
+            <th>Description</th>
+            <th>Status
+                <select  id="status-sort-select"> 
+                    <option value="" ></option>
+                    <option value="To do">To do</option>
+                    <option value="Doing">Doing</option>
+                    <option value="Done">Done</option>
+                </select>
+            </th>
+            <th>Due Date</th>
+            <th>Days-to-do  <i id="day-sort" class="fa-solid fa-sort-down"></i></th>
+        </thead>
+        <tbody>
+    
+        </tbody>
     </table> 
+
   </article>
 
   <script src="./script.js"></script>
