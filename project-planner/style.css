@@ -30,7 +30,7 @@ body{
     font-size: 20px;
 }
 #name-sort{
-    font-size: 15px;
+    font-size: 10px;
 }
 #day-sort{
     font-size: 15px;
@@ -42,7 +42,6 @@ body{
 
 }
 #status-sort-select{
-    font-weight: bold;
-    font-size: 15px;
+    font-size: 10px;
     border: none;
 }
