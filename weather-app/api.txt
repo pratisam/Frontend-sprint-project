@@ -1,0 +1,11 @@
+json.city.name
+json.city.sunrise
+json.city.sunset
+
+json.list[0].main.temp_min
+json.list[0].main.temp_max
+json.list[0].main.humidity
+json.list[0].weather.main
+json.list[0].weather.icon
+json.list[0].wind.speed
+json.list[0].wind.deg
