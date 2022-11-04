@@ -18,6 +18,7 @@ const fetchForecastFunction =() =>{
     fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=7584a6c968ef5512c04ae1156cf3f701&units=metric`)
     .then(response => response.json())
     .then(json =>{
+        console.log(json)
         inputForecastFunction(json)
     })
 }
@@ -27,23 +28,26 @@ inputHtml = document.getElementById('input-section')
 
 const inputForecastFunction=(weather)=>{
     let forecastResult =[]
-    for(let i=0;i<5;i++){
+    let i=0
+    while(i<40){
         forecastResult[i] ={
-            Date:       new Date().getDate()+i,
-            Month:      new Date().getMonth()+1,
+            Date:       new Date(weather.list[i].dt_txt).getDate(),
+            Month:       new Date(weather.list[i].dt_txt).getMonth()+1,
             city:       weather.city.name,
             sunrise:    new Date(weather.city.sunrise).toLocaleTimeString(),
             sunset:     new Date(weather.city.sunset).toLocaleTimeString(),
             tempMax:    Math.round(weather.list[i].main.temp_min),
-            tempMin:    Math.round(weather.list[i].main.temp_max),
+            tempMin:    Math.round(weather.list[i+3].main.temp_max),
             humidity:   Math.round(weather.list[i].main.humidity),
             weatherToday:    weather.list[i].weather[0].main,
             icon:       `http://openweathermap.org/img/wn/${weather.list[i].weather[0].icon}@2x.png`,
             wind:       Math.round(weather.list[i].wind.speed),
             windDeg:    weather.list[i].wind.deg,
         }
+        console.log(forecastResult[i].windDeg)
+
+        i=i+8;
     }
-   
     let mainDivJs = document.createElement('div');
         mainDivJs.classList.add('mainDivInput');
 
@@ -67,8 +71,8 @@ const inputForecastFunction=(weather)=>{
         paraJsClimate.innerHTML = `${forecastResult.weatherToday}`;
         paraJs.innerHTML = `${forecastResult.tempMin} &#176;<b> ${forecastResult.tempMax}&#176;</b>`;
         
-        paraJsPersep.innerHTML = ` <i class="fa-solid fa-droplet"></i> ${forecastResult.humidity} % <i class="fa-solid fa-wind windp"></i> ${forecastResult.wind}km/h`
-
+        paraJsPersep.innerHTML = ` <i class="fa-solid fa-droplet"></i> ${forecastResult.humidity} %     <i class="fa-solid fa-location-arrow windp " style ="transform: rotate(${forecastResult.windDeg}deg); margin-left:5px;"></i> ${forecastResult.wind}km/h`
+       
         divJs.appendChild(headingJs)
         divJs.appendChild(imgJs)
         divJs.appendChild( paraJsClimate)
@@ -80,13 +84,15 @@ const inputForecastFunction=(weather)=>{
 
 inputHtml.appendChild(mainDivJs)
 
-    // document.body.insertAdjacentHTML("beforeend", `<img src=${weatherResult.icon}>`)
-//     console.log(weatherResult)
-// console.log(weatherResult.icon)
+   
 
 }
 locationJs.addEventListener('keypress',locationFind)
+// Use the API of https://unsplash.com/ to show a photo of the city they entered in the form.
 
+// document.body.insertAdjacentHTML("beforeend", `<img src=${weatherResult.icon}>`)
+//     console.log(weatherResult)
+// console.log(weatherResult.icon)
 // const fetchFunction =() =>{
 //     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=7584a6c968ef5512c04ae1156cf3f701&units=metric`)
 //     .then(response => response.json())
